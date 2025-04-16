@@ -22,7 +22,6 @@ pipeline {
             steps {
                 echo 'Deliver....'
                 sh '''
-                kubectl set image deployment/frankenphp-deployment frankenphp=$DOCKER_IMAGE --namespace=default || \
                 kubectl apply -f deployment.yaml
                 '''
             }
