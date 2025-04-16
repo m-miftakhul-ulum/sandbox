@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frankenphp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frankenphp
+  template:
+    metadata:
+      labels:
+        app: frankenphp
+    spec:
+      containers:
+        - name: frankenphp
+          image: yourdockerhubuser/franken-php-app:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frankenphp-service
+spec:
+  selector:
+    app: frankenphp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
