@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frankenphp
-          image: yourdockerhubuser/franken-php-app:latest
+          image: myapp
           ports:
             - containerPort: 80
 ---
