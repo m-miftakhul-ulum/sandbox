@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
+                echo 'Building..'
                 sh '''
                 docker build -t myapp .
                 '''
@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo "Testing.."
+                echo 'Testing..'
                 sh '''
                 echo "doing test stuff.."
                 '''
@@ -20,10 +20,9 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                echo 'Deliver....'
-                sh '''
-                kubectl apply -f deployment.yaml
-                '''
+                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+                    sh 'kubectl apply -f deployment.yaml'
+                }
             }
         }
     }
