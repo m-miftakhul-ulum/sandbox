@@ -15,6 +15,7 @@ spec:
       containers:
         - name: frankenphp
           image: ulum75/myapp:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 ---
