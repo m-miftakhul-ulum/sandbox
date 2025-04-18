@@ -28,7 +28,10 @@ pipeline {
         stage('Deliver') {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-                    sh 'kubectl apply -f deployment.yaml'
+                    sh '''
+                    docker delete image $IMAGE_NAME
+                    kubectl apply -f deployment.yaml
+                    '''
                 }
             }
         }
