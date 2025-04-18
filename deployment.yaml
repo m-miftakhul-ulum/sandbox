@@ -15,10 +15,10 @@ spec:
       containers:
         - name: frankenphp
           image: ulum75/myapp:latest
-  
           ports:
             - containerPort: 80
 ---
+
 
 
 apiVersion: v1
@@ -32,4 +32,20 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer
+      nodePort: 30080  
+  type: NodePort
+
+
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: frankenphp-service
+# spec:
+#   selector:
+#     app: frankenphp
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 80
+#   type: LoadBalancer
