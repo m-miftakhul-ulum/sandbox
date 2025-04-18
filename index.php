@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-    <h2>buku tamu</h2>
+    <h2>buku tamu 1</h2>
     <form method="post">
         <input type="text" name="name" placeholder="Your name" required><br><br>
         <textarea name="message" placeholder="Your message" required></textarea><br><br>
