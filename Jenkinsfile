@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh '''
-                docker build -t myapp .
+                docker build -t myapp:latest .
                 '''
             }
         }
