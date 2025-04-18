@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'ulum75/myapp:latest'
+        IMAGE_NAME = 'ulum75/myapp:v1'
     }
 
     stages {
@@ -29,7 +29,6 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                     sh '''
-
                     kubectl apply -f deployment.yaml
                     '''
                 }
